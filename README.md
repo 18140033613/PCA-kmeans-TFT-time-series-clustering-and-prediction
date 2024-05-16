@@ -4,7 +4,9 @@ This repository contains code and sample data related to the title "InSAR time s
 To avoid environment conflicts, two separate environments are required for PAC-kmeans clustering and TFT prediction.
 
 I. First, for the PAC-kmeans clustering part, which is sourced from https://github.com/maybedave/InSAR-Time-Series-Clustering:
+
 Open Anaconda Prompt and create a new Conda environment using the environment.yml file located in the specified path. Use the following command: conda env create -f F:\PCA-kmeans-TFT-time-series-clustering-and-prediction\InSAR-Time-Series-Clustering\environment\environment.yml. You may need to modify the path according to your setup. The environment name in environment.yml is set as TSclustering, but you can modify it and activate your environment accordingly later.
+
 Once the environment is created, run the PCA_kmeans_Clustering.ipynb notebook.
 
 II. Next, for the TFT-Prediction part:
