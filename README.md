@@ -5,7 +5,7 @@ To avoid environment conflicts, two separate environments are required for PAC-k
 
 ### I. First, for the PAC-kmeans clustering part, which is sourced from https://github.com/maybedave/InSAR-Time-Series-Clustering:
 
-Open Anaconda Prompt and create a new Conda environment using the environment.yml file located in the specified path. Use the following command: _conda env create -f F:\PCA-kmeans-TFT-time-series-clustering-and-prediction\InSAR-Time-Series-Clustering\environment\environment.yml_. You may need to modify the path according to your setup. The environment name in environment.yml is set as _TSclustering_, but you can modify it and activate your environment accordingly later.
+Open Anaconda Prompt and create a new Conda environment using the environment.yml file located in the specified path. Use the following command: _conda env create -f F:\PCA-kmeans-TFT-time-series-clustering-and-prediction\InSAR-Time-Series-Clustering\environment\environment.yml_. You may need to modify the path according to your setup. The environment name in environment.yml is set as _TSclustering_, but you can modify it and activate your environment accordingly later.You may use _python -m ipykernel install --user --name your_env_name --display-name "Python (your_env_name)"_ to connect your conda environment to ipykernel.
 
 Once the environment is created, **run** the **PCA_kmeans_Clustering.ipynb** notebook.
 
