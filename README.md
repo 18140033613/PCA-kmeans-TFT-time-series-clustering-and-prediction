@@ -14,3 +14,4 @@ II. Next, for the TFT-Prediction part:
 Follow the same procedure to set up the environment. My environment.yml file is located at F:\PCA-kmeans-TFT-time-series-clustering-and-prediction\TFT-Prediction, and the environment name in my environment.yml is set as TFT.
 
 Once the environment is created, run the TFT-Prediction.ipynb notebook.
+123
