@@ -1,0 +1,30 @@
+embeddings {
+  tensor_name: "item_id:01600"
+  metadata_path: "01600/item_id\\metadata.tsv"
+  tensor_path: "01600/item_id\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "collapse_slide:01600"
+  metadata_path: "01600/collapse_slide\\metadata.tsv"
+  tensor_path: "01600/collapse_slide\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "lithology:01600"
+  metadata_path: "01600/lithology\\metadata.tsv"
+  tensor_path: "01600/lithology\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "VVcluster:01600"
+  metadata_path: "01600/VVcluster\\metadata.tsv"
+  tensor_path: "01600/VVcluster\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "VHcluster:01600"
+  metadata_path: "01600/VHcluster\\metadata.tsv"
+  tensor_path: "01600/VHcluster\\tensors.tsv"
+}
+embeddings {
+  tensor_name: "spacial_days:01600"
+  metadata_path: "01600/spacial_days\\metadata.tsv"
+  tensor_path: "01600/spacial_days\\tensors.tsv"
+}

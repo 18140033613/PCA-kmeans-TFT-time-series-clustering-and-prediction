@@ -1,0 +1,135 @@
+Beginning AutoGluon training...
+AutoGluon will save models to 'Autogluon-VVchronos_tiny'
+=================== System Info ===================
+AutoGluon Version:  1.1.0
+Python Version:     3.9.19
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.19045
+CPU Count:          20
+GPU Count:          1
+Memory Avail:       54.98 GB / 63.84 GB (86.1%)
+Disk Space Avail:   1396.71 GB / 1863.01 GB (75.0%)
+===================================================
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'hyperparameters': {'Chronos': {'batch_size': 64,
+                                 'device': 'cpu',
+                                 'model_path': 'tiny'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 20,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'VV',
+ 'verbosity': 4}
+
+Inferred time series frequency: 'W-FRI'
+Provided train_data has 56700 rows, 300 time series. Median time series length is 189 (min=189, max=189). 
+
+Provided data contains following columns:
+	target: 'VV'
+	past_covariates:
+		categorical:        []
+		continuous (float): ['VH', 'Rain', 'NDVI']
+	static_features:
+		categorical:        ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		continuous (float): ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', 'elevation', ...]
+
+To learn how to fix incorrectly inferred types, please see documentation for TimeSeriesPredictor.fit
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+
+Starting training. Start time is 2024-05-18 20:24:05
+Models that will be trained: ['Chronos[tiny]']
+Training timeseries model Chronos[tiny]. 
+	Window 0
+Beginning AutoGluon training...
+AutoGluon will save models to 'Autogluon-VVchronos_tiny'
+=================== System Info ===================
+AutoGluon Version:  1.1.0
+Python Version:     3.9.19
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.19045
+CPU Count:          20
+GPU Count:          1
+Memory Avail:       55.05 GB / 63.84 GB (86.2%)
+Disk Space Avail:   1396.70 GB / 1863.01 GB (75.0%)
+===================================================
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'hyperparameters': {'Chronos': {'batch_size': 64,
+                                 'device': 'cuda',
+                                 'model_path': 'tiny'}},
+ 'known_covariates_names': [],
+ 'num_val_windows': 1,
+ 'prediction_length': 20,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'VV',
+ 'verbosity': 4}
+
+Inferred time series frequency: 'W-FRI'
+Provided train_data has 56700 rows, 300 time series. Median time series length is 189 (min=189, max=189). 
+
+Provided data contains following columns:
+	target: 'VV'
+	past_covariates:
+		categorical:        []
+		continuous (float): ['VH', 'Rain', 'NDVI']
+	static_features:
+		categorical:        ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		continuous (float): ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', 'elevation', ...]
+
+To learn how to fix incorrectly inferred types, please see documentation for TimeSeriesPredictor.fit
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+
+Starting training. Start time is 2024-05-18 20:25:19
+Models that will be trained: ['Chronos[tiny]']
+Training timeseries model Chronos[tiny]. 
+	Window 0
+Predicting with model Chronos[tiny]\W0
+		-2.3641      = Validation score (-MASE)
+		0.001   s    = Training runtime
+		3.773   s    = Prediction runtime
+	-2.3641       = Validation score (-MASE)
+	0.04    s     = Training runtime
+	3.77    s     = Validation (prediction) runtime
+Not fitting ensemble as only 1 model was trained.
+Training complete. Models trained: ['Chronos[tiny]']
+Total runtime: 3.93 s
+Best model: Chronos[tiny]
+Best model score: -2.3641
+Model not specified in predict, will default to the model with the best validation score: Chronos[tiny]
+Found no cached predictions
+Prediction order: {'Chronos[tiny]'}
+Predicting with model Chronos[tiny]\W0
+Predicting with model Chronos[tiny]
+Cached predictions saved to Autogluon-VVchronos_tiny\models\cached_predictions.pkl
+Model not specified in predict, will default to the model with the best validation score: Chronos[tiny]
+Loaded cached predictions for models ['Chronos[tiny]']
+Prediction order: {'Chronos[tiny]'}
+Extending existing cached predictions
+Cached predictions saved to Autogluon-VVchronos_tiny\models\cached_predictions.pkl
+Generating leaderboard for all models trained
+Additional data provided, testing on additional data. Resulting leaderboard will be sorted according to test score (`score_test`).
+Loaded cached predictions for models ['Chronos[tiny]']
+Prediction order: {'Chronos[tiny]'}
+Extending existing cached predictions
+Cached predictions saved to Autogluon-VVchronos_tiny\models\cached_predictions.pkl
