@@ -1,0 +1,642 @@
+Beginning AutoGluon training... Time limit = 3600s
+AutoGluon will save models to 'output_VV'
+=================== System Info ===================
+AutoGluon Version:  1.1.0
+Python Version:     3.9.19
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.19044
+CPU Count:          8
+GPU Count:          0
+Memory Avail:       3.06 GB / 7.84 GB (39.0%)
+Disk Space Avail:   748.62 GB / 4657.49 GB (16.1%)
+===================================================
+Setting presets to: best_quality
+
+Fitting with arguments:
+{'enable_ensemble': True,
+ 'eval_metric': MASE,
+ 'excluded_model_types': ['Chronos'],
+ 'hyperparameters': 'default',
+ 'known_covariates_names': [],
+ 'num_val_windows': 2,
+ 'prediction_length': 20,
+ 'quantile_levels': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+ 'random_seed': 123,
+ 'refit_every_n_windows': 1,
+ 'refit_full': False,
+ 'skip_model_selection': False,
+ 'target': 'VV',
+ 'time_limit': 3600,
+ 'verbosity': 4}
+
+Inferred time series frequency: 'W-FRI'
+Provided train_data has 56700 rows, 300 time series. Median time series length is 189 (min=189, max=189). 
+
+Provided data contains following columns:
+	target: 'VV'
+	past_covariates:
+		categorical:        []
+		continuous (float): ['VH', 'Rain', 'NDVI']
+	static_features:
+		categorical:        ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		continuous (float): ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', 'elevation', ...]
+
+To learn how to fix incorrectly inferred types, please see documentation for TimeSeriesPredictor.fit
+
+AutoGluon will gauge predictive performance using evaluation metric: 'MASE'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+===================================================
+
+Starting training. Start time is 2024-05-18 18:53:18
+Excluded model types: ['Chronos']
+	Found 'Chronos' model in `hyperparameters`, but 'Chronos' is present in `excluded_model_types` and will be removed.
+Models that will be trained: ['SeasonalNaive', 'RecursiveTabular', 'DirectTabular', 'CrostonSBA', 'NPTS', 'DynamicOptimizedTheta', 'AutoETS', 'AutoARIMA', 'TemporalFusionTransformer', 'DeepAR', 'PatchTST']
+Reserving 300.0s for ensemble
+Training timeseries model SeasonalNaive. Training for up to 300.0s of the 3599.5s of remaining time.
+	Window 0
+Shortening all time series to at most 2500
+Predicting with model SeasonalNaive\W0
+		-4.4769      = Validation score (-MASE)
+		0.003   s    = Training runtime
+		2.615   s    = Prediction runtime
+	Window 1
+Shortening all time series to at most 2500
+Predicting with model SeasonalNaive\W1
+		-2.7663      = Validation score (-MASE)
+		0.016   s    = Training runtime
+		0.251   s    = Prediction runtime
+	-3.6216       = Validation score (-MASE)
+	2.75    s     = Training runtime
+	0.25    s     = Validation (prediction) runtime
+Reserving 326.9s for ensemble
+Training timeseries model RecursiveTabular. Training for up to 326.9s of the 3596.3s of remaining time.
+	Window 0
+Shortening all series to at most 3355
+train_df shape: (38400, 34), val_df shape: (6000, 34)
+No presets specified! To achieve strong results with AutoGluon, it is recommended to use the available presets.
+	Recommended Presets (For more details refer to https://auto.gluon.ai/stable/tutorials/tabular/tabular-essentials.html#presets):
+	presets='best_quality'   : Maximize accuracy. Default time_limit=3600.
+	presets='high_quality'   : Strong accuracy with fast inference speed. Default time_limit=3600.
+	presets='good_quality'   : Good accuracy with very fast inference speed. Default time_limit=3600.
+	presets='medium_quality' : Fast training time, ideal for initial prototyping.
+Beginning AutoGluon training ... Time limit = 144.9967919219624s
+AutoGluon will save models to "output_VV\models\RecursiveTabular\W0\tabular_predictor"
+=================== System Info ===================
+AutoGluon Version:  1.1.0
+Python Version:     3.9.19
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.19044
+CPU Count:          8
+Memory Avail:       2.56 GB / 7.84 GB (32.7%)
+Disk Space Avail:   748.62 GB / 4657.49 GB (16.1%)
+===================================================
+Train Data Rows:    38400
+Train Data Columns: 31
+Tuning Data Rows:    6000
+Tuning Data Columns: 31
+Label Column:       y
+Problem Type:       regression
+Preprocessing data ...
+Using Feature Generators to preprocess the data ...
+Fitting AutoMLPipelineFeatureGenerator...
+	Available Memory:                    2618.13 MB
+	Train Data (Original)  Memory Usage: 4.74 MB (0.2% of available memory)
+	Inferring data type of each feature based on column values. Set feature_metadata_in to manually specify special dtypes of the features.
+	Stage 1 Generators:
+		Fitting AsTypeFeatureGenerator...
+	Stage 2 Generators:
+		Fitting FillNaFeatureGenerator...
+	Stage 3 Generators:
+		Fitting IdentityFeatureGenerator...
+		Fitting CategoryFeatureGenerator...
+			Fitting CategoryMemoryMinimizeFeatureGenerator...
+	Stage 4 Generators:
+		Fitting DropUniqueFeatureGenerator...
+	Stage 5 Generators:
+		Fitting DropDuplicatesFeatureGenerator...
+	Useless Original Features (Count: 3): ['lag155', 'lag156', 'lag157']
+		These features carry no predictive signal and should be manually investigated.
+		This is typically a feature which has the same value for all rows.
+		These features do not need to be present at inference time.
+	Types of features in original data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 24 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	Types of features in processed data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 24 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	0.1s = Fit runtime
+	28 features in original data used to generate 28 features in processed data.
+	Train Data (Processed) Memory Usage: 4.24 MB (0.2% of available memory)
+Data preprocessing and feature engineering runtime = 0.15s ...
+AutoGluon will gauge predictive performance using evaluation metric: 'mean_absolute_error'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	To change this, specify the eval_metric parameter of Predictor()
+User-specified model hyperparameters to be fit:
+{
+	'NN_TORCH': {'proc.impute_strategy': 'constant'},
+	'GBM': {},
+}
+Fitting 2 L1 models ...
+Fitting model: LightGBM ... Training model for up to 144.84s of the 144.84s of remaining time.
+	-0.7893	 = Validation score   (-mean_absolute_error)
+	1.27s	 = Training   runtime
+	0.0s	 = Validation runtime
+Fitting model: NeuralNetTorch ... Training model for up to 143.35s of the 143.35s of remaining time.
+	-0.7829	 = Validation score   (-mean_absolute_error)
+	32.67s	 = Training   runtime
+	0.05s	 = Validation runtime
+Fitting model: WeightedEnsemble_L2 ... Training model for up to 144.84s of the 110.6s of remaining time.
+	Ensemble Weights: {'NeuralNetTorch': 0.556, 'LightGBM': 0.444}
+	-0.7696	 = Validation score   (-mean_absolute_error)
+	0.05s	 = Training   runtime
+	0.0s	 = Validation runtime
+AutoGluon training complete, total runtime = 34.65s ... Best model: "WeightedEnsemble_L2"
+TabularPredictor saved. To load, use: predictor = TabularPredictor.load("output_VV\models\RecursiveTabular\W0\tabular_predictor")
+Shortening all series to at most 3355
+Predicting with model RecursiveTabular\W0
+		-3.6627      = Validation score (-MASE)
+		37.362  s    = Training runtime
+		2.184   s    = Prediction runtime
+	Window 1
+Shortening all series to at most 3355
+train_df shape: (44400, 34), val_df shape: (6000, 34)
+No presets specified! To achieve strong results with AutoGluon, it is recommended to use the available presets.
+	Recommended Presets (For more details refer to https://auto.gluon.ai/stable/tutorials/tabular/tabular-essentials.html#presets):
+	presets='best_quality'   : Maximize accuracy. Default time_limit=3600.
+	presets='high_quality'   : Strong accuracy with fast inference speed. Default time_limit=3600.
+	presets='good_quality'   : Good accuracy with very fast inference speed. Default time_limit=3600.
+	presets='medium_quality' : Fast training time, ideal for initial prototyping.
+Beginning AutoGluon training ... Time limit = 258.40055138848044s
+AutoGluon will save models to "output_VV\models\RecursiveTabular\W1\tabular_predictor"
+=================== System Info ===================
+AutoGluon Version:  1.1.0
+Python Version:     3.9.19
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.19044
+CPU Count:          8
+Memory Avail:       2.52 GB / 7.84 GB (32.2%)
+Disk Space Avail:   748.61 GB / 4657.49 GB (16.1%)
+===================================================
+Train Data Rows:    44400
+Train Data Columns: 31
+Tuning Data Rows:    6000
+Tuning Data Columns: 31
+Label Column:       y
+Problem Type:       regression
+Preprocessing data ...
+Using Feature Generators to preprocess the data ...
+Fitting AutoMLPipelineFeatureGenerator...
+	Available Memory:                    2578.79 MB
+	Train Data (Original)  Memory Usage: 5.39 MB (0.2% of available memory)
+	Inferring data type of each feature based on column values. Set feature_metadata_in to manually specify special dtypes of the features.
+	Stage 1 Generators:
+		Fitting AsTypeFeatureGenerator...
+	Stage 2 Generators:
+		Fitting FillNaFeatureGenerator...
+	Stage 3 Generators:
+		Fitting IdentityFeatureGenerator...
+		Fitting CategoryFeatureGenerator...
+			Fitting CategoryMemoryMinimizeFeatureGenerator...
+	Stage 4 Generators:
+		Fitting DropUniqueFeatureGenerator...
+	Stage 5 Generators:
+		Fitting DropDuplicatesFeatureGenerator...
+	Types of features in original data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 27 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	Types of features in processed data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 27 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	0.2s = Fit runtime
+	31 features in original data used to generate 31 features in processed data.
+	Train Data (Processed) Memory Usage: 5.39 MB (0.2% of available memory)
+Data preprocessing and feature engineering runtime = 0.28s ...
+AutoGluon will gauge predictive performance using evaluation metric: 'mean_absolute_error'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	To change this, specify the eval_metric parameter of Predictor()
+User-specified model hyperparameters to be fit:
+{
+	'NN_TORCH': {'proc.impute_strategy': 'constant'},
+	'GBM': {},
+}
+Fitting 2 L1 models ...
+Fitting model: LightGBM ... Training model for up to 258.12s of the 258.12s of remaining time.
+	-0.6407	 = Validation score   (-mean_absolute_error)
+	2.68s	 = Training   runtime
+	0.04s	 = Validation runtime
+Fitting model: NeuralNetTorch ... Training model for up to 255.3s of the 255.3s of remaining time.
+	-0.6459	 = Validation score   (-mean_absolute_error)
+	70.39s	 = Training   runtime
+	0.03s	 = Validation runtime
+Fitting model: WeightedEnsemble_L2 ... Training model for up to 258.12s of the 184.8s of remaining time.
+	Ensemble Weights: {'LightGBM': 0.545, 'NeuralNetTorch': 0.455}
+	-0.6253	 = Validation score   (-mean_absolute_error)
+	0.02s	 = Training   runtime
+	0.0s	 = Validation runtime
+AutoGluon training complete, total runtime = 73.78s ... Best model: "WeightedEnsemble_L2"
+TabularPredictor saved. To load, use: predictor = TabularPredictor.load("output_VV\models\RecursiveTabular\W1\tabular_predictor")
+Shortening all series to at most 3355
+Predicting with model RecursiveTabular\W1
+		-2.0759      = Validation score (-MASE)
+		74.150  s    = Training runtime
+		1.467   s    = Prediction runtime
+	-2.8693       = Validation score (-MASE)
+	113.87  s     = Training runtime
+	1.47    s     = Validation (prediction) runtime
+Reserving 348.1s for ensemble
+Training timeseries model DirectTabular. Training for up to 348.1s of the 3480.8s of remaining time.
+	Window 0
+Shortening all series to at most 3354
+train_df shape: (38700, 34), val_df shape: (6000, 34)
+No presets specified! To achieve strong results with AutoGluon, it is recommended to use the available presets.
+	Recommended Presets (For more details refer to https://auto.gluon.ai/stable/tutorials/tabular/tabular-essentials.html#presets):
+	presets='best_quality'   : Maximize accuracy. Default time_limit=3600.
+	presets='high_quality'   : Strong accuracy with fast inference speed. Default time_limit=3600.
+	presets='good_quality'   : Good accuracy with very fast inference speed. Default time_limit=3600.
+	presets='medium_quality' : Fast training time, ideal for initial prototyping.
+Beginning AutoGluon training ... Time limit = 156.48290460586549s
+AutoGluon will save models to "output_VV\models\DirectTabular\W0\tabular_predictor"
+=================== System Info ===================
+AutoGluon Version:  1.1.0
+Python Version:     3.9.19
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.19044
+CPU Count:          8
+Memory Avail:       2.43 GB / 7.84 GB (30.9%)
+Disk Space Avail:   748.60 GB / 4657.49 GB (16.1%)
+===================================================
+Train Data Rows:    38700
+Train Data Columns: 31
+Tuning Data Rows:    6000
+Tuning Data Columns: 31
+Label Column:       y
+Problem Type:       regression
+Preprocessing data ...
+Using Feature Generators to preprocess the data ...
+Fitting AutoMLPipelineFeatureGenerator...
+	Available Memory:                    2476.38 MB
+	Train Data (Original)  Memory Usage: 4.78 MB (0.2% of available memory)
+	Inferring data type of each feature based on column values. Set feature_metadata_in to manually specify special dtypes of the features.
+	Stage 1 Generators:
+		Fitting AsTypeFeatureGenerator...
+	Stage 2 Generators:
+		Fitting FillNaFeatureGenerator...
+	Stage 3 Generators:
+		Fitting IdentityFeatureGenerator...
+		Fitting CategoryFeatureGenerator...
+			Fitting CategoryMemoryMinimizeFeatureGenerator...
+	Stage 4 Generators:
+		Fitting DropUniqueFeatureGenerator...
+	Stage 5 Generators:
+		Fitting DropDuplicatesFeatureGenerator...
+	Useless Original Features (Count: 3): ['lag155', 'lag156', 'lag157']
+		These features carry no predictive signal and should be manually investigated.
+		This is typically a feature which has the same value for all rows.
+		These features do not need to be present at inference time.
+	Types of features in original data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 24 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	Types of features in processed data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 24 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	0.2s = Fit runtime
+	28 features in original data used to generate 28 features in processed data.
+	Train Data (Processed) Memory Usage: 4.27 MB (0.2% of available memory)
+Data preprocessing and feature engineering runtime = 0.2s ...
+AutoGluon will gauge predictive performance using evaluation metric: 'mean_absolute_error'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	To change this, specify the eval_metric parameter of Predictor()
+User-specified model hyperparameters to be fit:
+{
+	'GBM': {},
+}
+Fitting 1 L1 models ...
+Fitting model: LightGBM ... Training model for up to 156.28s of the 156.28s of remaining time.
+	-0.716	 = Validation score   (-mean_absolute_error)
+	0.86s	 = Training   runtime
+	0.02s	 = Validation runtime
+Fitting model: WeightedEnsemble_L2 ... Training model for up to 156.28s of the 155.37s of remaining time.
+	Ensemble Weights: {'LightGBM': 1.0}
+	-0.716	 = Validation score   (-mean_absolute_error)
+	0.0s	 = Training   runtime
+	0.0s	 = Validation runtime
+AutoGluon training complete, total runtime = 1.28s ... Best model: "WeightedEnsemble_L2"
+TabularPredictor saved. To load, use: predictor = TabularPredictor.load("output_VV\models\DirectTabular\W0\tabular_predictor")
+Shortening all series to at most 3374
+Shortening all series to at most 3354
+Predicting with model DirectTabular\W0
+		-2.8079      = Validation score (-MASE)
+		1.520   s    = Training runtime
+		0.301   s    = Prediction runtime
+	Window 1
+Shortening all series to at most 3354
+train_df shape: (44700, 34), val_df shape: (6000, 34)
+No presets specified! To achieve strong results with AutoGluon, it is recommended to use the available presets.
+	Recommended Presets (For more details refer to https://auto.gluon.ai/stable/tutorials/tabular/tabular-essentials.html#presets):
+	presets='best_quality'   : Maximize accuracy. Default time_limit=3600.
+	presets='high_quality'   : Strong accuracy with fast inference speed. Default time_limit=3600.
+	presets='good_quality'   : Good accuracy with very fast inference speed. Default time_limit=3600.
+	presets='medium_quality' : Fast training time, ideal for initial prototyping.
+Beginning AutoGluon training ... Time limit = 311.3928105688095s
+AutoGluon will save models to "output_VV\models\DirectTabular\W1\tabular_predictor"
+=================== System Info ===================
+AutoGluon Version:  1.1.0
+Python Version:     3.9.19
+Operating System:   Windows
+Platform Machine:   AMD64
+Platform Version:   10.0.19044
+CPU Count:          8
+Memory Avail:       2.42 GB / 7.84 GB (30.8%)
+Disk Space Avail:   748.59 GB / 4657.49 GB (16.1%)
+===================================================
+Train Data Rows:    44700
+Train Data Columns: 31
+Tuning Data Rows:    6000
+Tuning Data Columns: 31
+Label Column:       y
+Problem Type:       regression
+Preprocessing data ...
+Using Feature Generators to preprocess the data ...
+Fitting AutoMLPipelineFeatureGenerator...
+	Available Memory:                    2465.32 MB
+	Train Data (Original)  Memory Usage: 5.42 MB (0.2% of available memory)
+	Inferring data type of each feature based on column values. Set feature_metadata_in to manually specify special dtypes of the features.
+	Stage 1 Generators:
+		Fitting AsTypeFeatureGenerator...
+	Stage 2 Generators:
+		Fitting FillNaFeatureGenerator...
+	Stage 3 Generators:
+		Fitting IdentityFeatureGenerator...
+		Fitting CategoryFeatureGenerator...
+			Fitting CategoryMemoryMinimizeFeatureGenerator...
+	Stage 4 Generators:
+		Fitting DropUniqueFeatureGenerator...
+	Stage 5 Generators:
+		Fitting DropDuplicatesFeatureGenerator...
+	Types of features in original data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 27 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	Types of features in processed data (raw dtype, special dtypes):
+		('category', []) :  4 | ['VVcluster', 'VHcluster', 'collapse_slide', 'lithology']
+		('float', [])    : 27 | ['dist_fault', 'dist_river', 'dist_road', 'slope', 'aspect', ...]
+	0.2s = Fit runtime
+	31 features in original data used to generate 31 features in processed data.
+	Train Data (Processed) Memory Usage: 5.42 MB (0.2% of available memory)
+Data preprocessing and feature engineering runtime = 0.2s ...
+AutoGluon will gauge predictive performance using evaluation metric: 'mean_absolute_error'
+	This metric's sign has been flipped to adhere to being higher_is_better. The metric score can be multiplied by -1 to get the metric value.
+	To change this, specify the eval_metric parameter of Predictor()
+User-specified model hyperparameters to be fit:
+{
+	'GBM': {},
+}
+Fitting 1 L1 models ...
+Fitting model: LightGBM ... Training model for up to 311.19s of the 311.19s of remaining time.
+	-0.6413	 = Validation score   (-mean_absolute_error)
+	5.59s	 = Training   runtime
+	0.12s	 = Validation runtime
+Fitting model: WeightedEnsemble_L2 ... Training model for up to 311.19s of the 305.32s of remaining time.
+	Ensemble Weights: {'LightGBM': 1.0}
+	-0.6413	 = Validation score   (-mean_absolute_error)
+	0.02s	 = Training   runtime
+	0.0s	 = Validation runtime
+AutoGluon training complete, total runtime = 6.15s ... Best model: "WeightedEnsemble_L2"
+TabularPredictor saved. To load, use: predictor = TabularPredictor.load("output_VV\models\DirectTabular\W1\tabular_predictor")
+Shortening all series to at most 3374
+Shortening all series to at most 3354
+Predicting with model DirectTabular\W1
+		-3.1677      = Validation score (-MASE)
+		6.557   s    = Training runtime
+		0.479   s    = Prediction runtime
+	-2.9878       = Validation score (-MASE)
+	8.52    s     = Training runtime
+	0.48    s     = Validation (prediction) runtime
+Reserving 385.8s for ensemble
+Training timeseries model CrostonSBA. Training for up to 385.8s of the 3471.8s of remaining time.
+	Window 0
+Shortening all time series to at most 2500
+Predicting with model CrostonSBA\W0
+		-5.5178      = Validation score (-MASE)
+		0.031   s    = Training runtime
+		14.916  s    = Prediction runtime
+	Window 1
+Shortening all time series to at most 2500
+Predicting with model CrostonSBA\W1
+		-4.9447      = Validation score (-MASE)
+		0.016   s    = Training runtime
+		0.369   s    = Prediction runtime
+	-5.2313       = Validation score (-MASE)
+	15.09   s     = Training runtime
+	0.37    s     = Validation (prediction) runtime
+Reserving 432.0s for ensemble
+Training timeseries model NPTS. Training for up to 432.0s of the 3456.3s of remaining time.
+	Window 0
+Shortening all time series to at most 2500
+Predicting with model NPTS\W0
+		-4.1290      = Validation score (-MASE)
+		0.016   s    = Training runtime
+		3.287   s    = Prediction runtime
+	Window 1
+Shortening all time series to at most 2500
+Predicting with model NPTS\W1
+		-4.5564      = Validation score (-MASE)
+		0.016   s    = Training runtime
+		3.626   s    = Prediction runtime
+	-4.3427       = Validation score (-MASE)
+	3.47    s     = Training runtime
+	3.63    s     = Validation (prediction) runtime
+Reserving 492.7s for ensemble
+Training timeseries model DynamicOptimizedTheta. Training for up to 492.7s of the 3449.0s of remaining time.
+	Window 0
+Shortening all time series to at most 2500
+Predicting with model DynamicOptimizedTheta\W0
+		-4.3810      = Validation score (-MASE)
+		0.009   s    = Training runtime
+		31.154  s    = Prediction runtime
+	Window 1
+Shortening all time series to at most 2500
+Predicting with model DynamicOptimizedTheta\W1
+		-2.8609      = Validation score (-MASE)
+		0.031   s    = Training runtime
+		1.001   s    = Prediction runtime
+	-3.6209       = Validation score (-MASE)
+	31.34   s     = Training runtime
+	1.00    s     = Validation (prediction) runtime
+Reserving 569.3s for ensemble
+Training timeseries model AutoETS. Training for up to 569.3s of the 3416.1s of remaining time.
+	Window 0
+Shortening all time series to at most 2500
+Predicting with model AutoETS\W0
+		-4.4668      = Validation score (-MASE)
+		0.016   s    = Training runtime
+		19.384  s    = Prediction runtime
+	Window 1
+Shortening all time series to at most 2500
+Predicting with model AutoETS\W1
+		-2.8389      = Validation score (-MASE)
+		0.022   s    = Training runtime
+		0.709   s    = Prediction runtime
+	-3.6529       = Validation score (-MASE)
+	19.58   s     = Training runtime
+	0.71    s     = Validation (prediction) runtime
+Reserving 600.0s for ensemble
+Training timeseries model AutoARIMA. Training for up to 698.9s of the 3395.8s of remaining time.
+	Window 0
+Shortening all time series to at most 2500
+	Warning: Exception caused AutoARIMA to fail during training... Skipping this model.
+	A worker process managed by the executor was unexpectedly terminated. This could be caused by a segmentation fault while calling the function or by an excessive memory usage causing the Operating System to kill the worker.
+
+Traceback (most recent call last):
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\trainer\abstract_trainer.py", line 512, in _train_and_save
+    model = self._train_single(train_data, model, val_data=val_data, time_limit=time_limit)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\trainer\abstract_trainer.py", line 428, in _train_single
+    model.fit(
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\models\abstract\abstract_timeseries_model.py", line 247, in fit
+    return super().fit(train_data=train_data, val_data=val_data, **kwargs)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\core\models\abstract\abstract_model.py", line 855, in fit
+    out = self._fit(**kwargs)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\models\multi_window\multi_window_model.py", line 139, in _fit
+    model.score_and_cache_oof(val_fold, store_val_score=True, store_predict_time=True)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\models\local\abstract_local_model.py", line 180, in score_and_cache_oof
+    super().score_and_cache_oof(
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\models\abstract\abstract_timeseries_model.py", line 383, in score_and_cache_oof
+    oof_predictions = self.predict(past_data, known_covariates=known_covariates, **predict_kwargs)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\models\abstract\abstract_timeseries_model.py", line 304, in predict
+    predictions = self._predict(data=data, known_covariates=known_covariates, **kwargs)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\autogluon\timeseries\models\local\abstract_local_model.py", line 155, in _predict
+    predictions_with_flags = executor(
+  File "D:\anaconda3\envs\TFT\lib\site-packages\joblib\parallel.py", line 2007, in __call__
+    return output if self.return_generator else list(output)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\joblib\parallel.py", line 1650, in _get_outputs
+    yield from self._retrieve()
+  File "D:\anaconda3\envs\TFT\lib\site-packages\joblib\parallel.py", line 1754, in _retrieve
+    self._raise_error_fast()
+  File "D:\anaconda3\envs\TFT\lib\site-packages\joblib\parallel.py", line 1789, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "D:\anaconda3\envs\TFT\lib\site-packages\joblib\parallel.py", line 745, in get_result
+    return self._return_or_raise()
+  File "D:\anaconda3\envs\TFT\lib\site-packages\joblib\parallel.py", line 763, in _return_or_raise
+    raise self._result
+joblib.externals.loky.process_executor.TerminatedWorkerError: A worker process managed by the executor was unexpectedly terminated. This could be caused by a segmentation fault while calling the function or by an excessive memory usage causing the Operating System to kill the worker.
+
+
+Reserving 600.0s for ensemble
+Training timeseries model TemporalFusionTransformer. Training for up to 931.0s of the 3392.9s of remaining time.
+	Window 0
+	bool_features: [], continuous_features: ['VH', 'NDVI'], skewed_features: ['Rain']
+	bool_features: [], continuous_features: ['slope', 'aspect', 'elevation', 'profile_curv'], skewed_features: ['dist_fault', 'dist_river', 'dist_road']
+GluonTS logging is turned on during training. Note that losses reported by GluonTS may not correspond to those specified via `eval_metric`.
+	Training on device 'cpu'
+Removing lightning_logs directory output_VV\models\TemporalFusionTransformer\W0\lightning_logs
+Predicting with model TemporalFusionTransformer\W0
+		-2.4628      = Validation score (-MASE)
+		310.672 s    = Training runtime
+		0.394   s    = Prediction runtime
+	Window 1
+	bool_features: [], continuous_features: ['VH', 'NDVI'], skewed_features: ['Rain']
+	bool_features: [], continuous_features: ['slope', 'aspect', 'elevation', 'profile_curv'], skewed_features: ['dist_fault', 'dist_river', 'dist_road']
+GluonTS logging is turned on during training. Note that losses reported by GluonTS may not correspond to those specified via `eval_metric`.
+	Training on device 'cpu'
+Removing lightning_logs directory output_VV\models\TemporalFusionTransformer\W1\lightning_logs
+Predicting with model TemporalFusionTransformer\W1
+		-2.0136      = Validation score (-MASE)
+		386.315 s    = Training runtime
+		0.424   s    = Prediction runtime
+	-2.2382       = Validation score (-MASE)
+	697.55  s     = Training runtime
+	0.42    s     = Validation (prediction) runtime
+Reserving 600.0s for ensemble
+Training timeseries model DeepAR. Training for up to 1047.4s of the 2694.9s of remaining time.
+	Window 0
+	bool_features: [], continuous_features: ['slope', 'aspect', 'elevation', 'profile_curv'], skewed_features: ['dist_fault', 'dist_river', 'dist_road']
+GluonTS logging is turned on during training. Note that losses reported by GluonTS may not correspond to those specified via `eval_metric`.
+	Training on device 'cpu'
+Removing lightning_logs directory output_VV\models\DeepAR\W0\lightning_logs
+Predicting with model DeepAR\W0
+		-2.8039      = Validation score (-MASE)
+		99.538  s    = Training runtime
+		3.608   s    = Prediction runtime
+	Window 1
+	bool_features: [], continuous_features: ['slope', 'aspect', 'elevation', 'profile_curv'], skewed_features: ['dist_fault', 'dist_river', 'dist_road']
+GluonTS logging is turned on during training. Note that losses reported by GluonTS may not correspond to those specified via `eval_metric`.
+	Training on device 'cpu'
+Removing lightning_logs directory output_VV\models\DeepAR\W1\lightning_logs
+Predicting with model DeepAR\W1
+		-2.4318      = Validation score (-MASE)
+		90.792  s    = Training runtime
+		3.574   s    = Prediction runtime
+	-2.6178       = Validation score (-MASE)
+	194.19  s     = Training runtime
+	3.57    s     = Validation (prediction) runtime
+Reserving 600.0s for ensemble
+Training timeseries model PatchTST. Training for up to 1895.8s of the 2495.8s of remaining time.
+	Window 0
+GluonTS logging is turned on during training. Note that losses reported by GluonTS may not correspond to those specified via `eval_metric`.
+	Training on device 'cpu'
+Removing lightning_logs directory output_VV\models\PatchTST\W0\lightning_logs
+Predicting with model PatchTST\W0
+		-2.3351      = Validation score (-MASE)
+		59.941  s    = Training runtime
+		0.376   s    = Prediction runtime
+	Window 1
+GluonTS logging is turned on during training. Note that losses reported by GluonTS may not correspond to those specified via `eval_metric`.
+	Training on device 'cpu'
+Removing lightning_logs directory output_VV\models\PatchTST\W1\lightning_logs
+Predicting with model PatchTST\W1
+		-2.2206      = Validation score (-MASE)
+		77.878  s    = Training runtime
+		0.396   s    = Prediction runtime
+	-2.2779       = Validation score (-MASE)
+	138.36  s     = Training runtime
+	0.40    s     = Validation (prediction) runtime
+Fitting simple weighted ensemble.
+	Ensemble weights: {'PatchTST': 0.46, 'TemporalFusionTransformer': 0.54}
+	-2.1711       = Validation score (-MASE)
+	2.25    s     = Training runtime
+	0.82    s     = Validation (prediction) runtime
+Training complete. Models trained: ['SeasonalNaive', 'RecursiveTabular', 'DirectTabular', 'CrostonSBA', 'NPTS', 'DynamicOptimizedTheta', 'AutoETS', 'TemporalFusionTransformer', 'DeepAR', 'PatchTST', 'WeightedEnsemble']
+Total runtime: 1245.26 s
+Best model: WeightedEnsemble
+Best model score: -2.1711
+Model not specified in predict, will default to the model with the best validation score: WeightedEnsemble
+Found no cached predictions
+Prediction order: ['TemporalFusionTransformer', 'PatchTST', 'WeightedEnsemble']
+Predicting with model TemporalFusionTransformer\W1
+Predicting with model TemporalFusionTransformer
+Predicting with model PatchTST\W1
+Predicting with model PatchTST
+Cached predictions saved to output_VV\models\cached_predictions.pkl
+Generating leaderboard for all models trained
+Additional data provided, testing on additional data. Resulting leaderboard will be sorted according to test score (`score_test`).
+Loaded cached predictions for models ['TemporalFusionTransformer', 'PatchTST', 'WeightedEnsemble']
+Prediction order: ['DirectTabular', 'AutoETS', 'PatchTST', 'DynamicOptimizedTheta', 'SeasonalNaive', 'CrostonSBA', 'TemporalFusionTransformer', 'DeepAR', 'NPTS', 'RecursiveTabular', 'WeightedEnsemble']
+Shortening all series to at most 3374
+Shortening all series to at most 3354
+Predicting with model DirectTabular\W1
+Predicting with model DirectTabular
+Shortening all time series to at most 2500
+Predicting with model AutoETS\W1
+Predicting with model AutoETS
+Shortening all time series to at most 2500
+Predicting with model DynamicOptimizedTheta\W1
+Predicting with model DynamicOptimizedTheta
+Shortening all time series to at most 2500
+Predicting with model SeasonalNaive\W1
+Predicting with model SeasonalNaive
+Shortening all time series to at most 2500
+Predicting with model CrostonSBA\W1
+Predicting with model CrostonSBA
+Predicting with model DeepAR\W1
+Predicting with model DeepAR
+Shortening all time series to at most 2500
+Predicting with model NPTS\W1
+Predicting with model NPTS
+Shortening all series to at most 3355
+Predicting with model RecursiveTabular\W1
+Predicting with model RecursiveTabular
+Extending existing cached predictions
+Cached predictions saved to output_VV\models\cached_predictions.pkl
