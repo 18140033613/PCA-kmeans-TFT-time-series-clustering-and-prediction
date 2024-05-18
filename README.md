@@ -7,11 +7,11 @@ To avoid environment conflicts, two separate environments are required for PAC-k
 
 Open Anaconda Prompt and create a new Conda environment using the environment.yml file located in the specified path. Use the following command:
 
-_conda env create -f F:\PCA-kmeans-TFT-time-series-clustering-and-prediction\InSAR-Time-Series-Clustering\environment\environment.yml_. 
+***conda env create -f F:\PCA-kmeans-TFT-time-series-clustering-and-prediction\InSAR-Time-Series-Clustering\environment\environment.yml***. 
 
-You may need to modify the path according to your setup in the _environment.yml_. The environment name in the _environment.yml_ is set as _TSclustering_, but you can modify it and activate your environment accordingly later.
+You may need to modify the path according to your setup in the ***environment.yml***. The environment name in the ***environment.yml*** is set as _TSclustering_, but you can modify it and activate your environment accordingly later.
 
-You may use _python -m ipykernel install --user --name your_env_name --display-name your_env_name_ to connect your conda environment to ipykernel.
+You may use ***python -m ipykernel install --user --name your_env_name --display-name your_env_name*** to connect your conda environment to ipykernel.
 
 Once the environment is created, **run** the **PCA_kmeans_Clustering.ipynb** notebook.
 
@@ -19,20 +19,20 @@ Once the environment is created, **run** the **PCA_kmeans_Clustering.ipynb** not
 
 We use the autogluon library（ https://github.com/autogluon/autogluon.git ）, as well as the pytorch forcasting library（ https://github.com/jdb78/pytorch-forecasting.git ）to train and predict the model.Follow the steps below to create a conda environment, which is feasible for hands-on testing:
 
-conda create -n your_env_name python=3.9
+***conda create -n your_env_name python=3.9***
 
-pip install torch -f https://download.pytorch.org/whl/torch_stable.html
+***pip install torch -f https://download.pytorch.org/whl/torch_stable.html***
 
-pip install jupyter
+***pip install jupyter***
 
-pip install ipykernel
+***pip install ipykernel***
 
-pip install pytorch-forecasting
+***pip install pytorch-forecasting***
 
-pip install autogluon
+***pip install autogluon***
 
-pip install optuna-integration
+***pip install optuna-integration***
 
-pip install optuna==3.4
+***pip install optuna==3.4***
 
 Once the environment is created, **run** the **1_Allmodels.ipynb** , **2_Chronos_models.ipynb**, **3_Tune_TFT.ipynb** notebooks.
