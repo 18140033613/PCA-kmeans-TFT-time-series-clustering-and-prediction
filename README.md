@@ -17,7 +17,7 @@ Once the environment is created, **run** the **PCA_kmeans_Clustering.ipynb** not
 
 ### II. Next, for the TFT-Prediction part:
 
-We use the autogluon library（ https://github.com/autogluon/autogluon.git ）, as well as the pytorch forcasting library（ https://github.com/jdb78/pytorch-forecasting.git ）Train and predict the model.Follow the steps below to create a conda environment, which is feasible for hands-on testing:
+We use the autogluon library（ https://github.com/autogluon/autogluon.git ）, as well as the pytorch forcasting library（ https://github.com/jdb78/pytorch-forecasting.git ）to train and predict the model.Follow the steps below to create a conda environment, which is feasible for hands-on testing:
 
 conda create -n your_env_name python=3.9
 
