@@ -1,5 +1,5 @@
 # PCA-kmeans-TFT-time-series-clustering-and-prediction
-This repository contains code and sample data related to the essay title ***"InSAR time series clustering and Landslide displacement prediction with multiple variables and time series: A case study of the Badui area in Eastern Tibet"***, mainly focusing on clustering and prediction of time series.
+This repository contains code and sample data related to the essay title ***"InSAR time series clustering and Landslide displacement prediction with multiple variables and time series: A case study of the Badui area in Eastern Tibet"***, mainly focusing on clustering and prediction of time series.The .csv sample file provides a specific data format. You can replace it with your own data to conduct clustering and predictive experiments based on your own data. Welcome to cite our paper. Wish you all the best.We would be honored if you would consider citing our paper in your work and we sincerely hope that your endeavors are met with great success.
 
 To avoid environment conflicts, two separate environments are required for PAC-kmeans clustering and TFT prediction.
 
